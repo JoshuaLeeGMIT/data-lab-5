@@ -2,6 +2,10 @@ const express = require('express')
 const app = express()
 const port = 3000
 const path = require('path')
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   res.send('Welcome to Data Representation & Querying');
@@ -37,6 +41,10 @@ app.get('/test', (req, res) => {
 
 app.get('/name', (req, res) => {
   res.send('Hello ' + req.query.fName + ' ' + req.query.lName + '!');
+})
+
+app.post('/name', (req, res) => {
+  res.send('Hello, ' + req.body.fName + ' ' + req.body.lName + '!');
 })
 
 app.listen(port, () => {
