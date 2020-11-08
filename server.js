@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const path = require('path')
 
 app.get('/', (req, res) => {
   res.send('Welcome to Data Representation & Querying');
@@ -28,6 +29,11 @@ app.get('/api/movies', (req, res) => {
   ];
 
   res.json({movies: data});
+})
+
+app.get('/test', (req, res) => {
+  console.log(__dirname);
+  res.sendFile(__dirname + '/index.html');
 })
 
 app.listen(port, () => {
