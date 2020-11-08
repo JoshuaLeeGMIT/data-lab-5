@@ -32,8 +32,11 @@ app.get('/api/movies', (req, res) => {
 })
 
 app.get('/test', (req, res) => {
-  console.log(__dirname);
   res.sendFile(__dirname + '/index.html');
+})
+
+app.get('/name', (req, res) => {
+  res.send('Hello ' + req.query.fName + ' ' + req.query.lName + '!');
 })
 
 app.listen(port, () => {
