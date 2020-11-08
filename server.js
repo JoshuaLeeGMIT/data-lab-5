@@ -4,13 +4,16 @@ const port = 3000
 const path = require('path')
 const bodyParser = require('body-parser')
 
+/* Set up body-parser. */
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+/* Send message at /. */
 app.get('/', (req, res) => {
   res.send('Welcome to Data Representation & Querying');
 })
 
+/* Grab data from URL. */
 app.get('/hello/:name', (req, res) => {
   res.send('Hello, ' + req.params.name + '!');
 })
@@ -32,17 +35,21 @@ app.get('/api/movies', (req, res) => {
     }
   ];
 
+  /* Send back the json data. */
   res.json({movies: data});
 })
 
+/* Send index.html when user accesses /test. */
 app.get('/test', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 })
 
+/* Handle form's GET. */
 app.get('/name', (req, res) => {
   res.send('Hello ' + req.query.fName + ' ' + req.query.lName + '!');
 })
 
+/* Handle forms POST. */
 app.post('/name', (req, res) => {
   res.send('Hello, ' + req.body.fName + ' ' + req.body.lName + '!');
 })
